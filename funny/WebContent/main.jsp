@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>사이트명</title>
+<title>봄365</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -24,7 +23,6 @@
 <link rel="stylesheet" href="css/ionicons.min.css">
 <!-- Bootstrap  -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-
 <!-- Magnific Popup -->
 <link rel="stylesheet" href="css/magnific-popup.css">
 
@@ -51,7 +49,7 @@
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader pageSector=" " />
+		<mytag:pageHeader/>
 
 		<aside id="colorlib-hero">
 			<div class="flexslider">
@@ -70,7 +68,8 @@
 												<span>입양은 가장 실천적인 동물구호 활동입니다</span>
 											</p>
 											<p>
-												<a href="#" class="btn btn-primary">입양하기</a>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+												<a href="animalsList.jsp" class="btn btn-primary">입양하기</a>
 											</p>
 										</div>
 									</div>
@@ -92,7 +91,7 @@
 												<span>동물과 인간이 더불어 사는 사회를 위해</span>
 											</p>
 											<p>
-												<a href="#" class="btn btn-primary">후원하기</a>
+												<a href="support.jsp" class="btn btn-primary">후원하기</a>
 											</p>
 										</div>
 									</div>
@@ -113,7 +112,7 @@
 												<span>여러분의 도움이 보호소 운영에 큰 힘이 됩니다</span>
 											</p>
 											<p>
-												<a href="#" class="btn btn-primary">봉사자모집</a>
+												<a href="boardList.do" class="btn btn-primary">봉사자모집</a>
 											</p>
 										</div>
 									</div>

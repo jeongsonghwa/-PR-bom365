@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -9,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<mytag:icon />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -51,14 +50,15 @@
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader pageSector=" " />
+		<mytag:pageHeader/>
 
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="index.html">Home</a></span> / <span>My Page</span>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+							<span><a href="mypage.jsp">My Page</a></span> / <span>탈퇴완료</span>
 						</p>
 					</div>
 				</div>
@@ -74,6 +74,7 @@
 						</p>
 						<h3 class="mb-4">탈퇴 완료되었습니다.<br>그동안 이용해 주셔서 감사합니다.</h3>
 						<p>
+<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 							<a href="main.jsp" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
 						</p>
 					</div>
