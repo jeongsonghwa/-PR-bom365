@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\³ª\Desktop\test2(workspace)\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1108948407.index
+\funny\src
+C:\Users\³ª\Desktop\test2\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1108948407.index
+\funny\src
