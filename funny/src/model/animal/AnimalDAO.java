@@ -6,16 +6,57 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.sql.SQLException;
+ 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+ 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+ 
+import model.animal.AnimalVO;
+import model.mybatis.SqlMapConfig;
+ 
 public class AnimalDAO {
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	String sql_insertAll = "insert into animal values((select nvl(max(animal_number),0)+1 from animal),null,?,?,?,?,?,?,?,default)";
+    
+    Context context;
+    DataSource dataSource;
+    
+    Connection conn;
+    PreparedStatement pstm;
+    ResultSet rs;
+    
+    SqlSessionFactory factory = SqlMapConfig.getFactory();
+    SqlSession sqlsession;
+    
+    public AnimalDAO(){
+      
+        sqlsession = factory.openSession(true);
+    }
 
 	public void insertAll(List<AnimalVO> datas) {
-		conn = JDBCUtil.connect();
+		
+		    HashMap<String, String> datas = new HashMap<>();
+			datas.put("animal_name", animal_name);
+			datas.put("animal_species",animal_species);
+			datas.put("animal_type", animal_type);
+			datas.put("animal_gender", animal_gender);
+			datas.put("animal_age", animal_age);
+			datas.put("animal_weight",animal_weight);
+			datas.put("animal_image",animal_image);
+			
+			AnimalVO animals = sqlsession.selectOne("animal.select", datas);
+			return animals;
+		}
+	
+
+}
+	
+		/*conn = JDBCUtil.connect();
 		try {
 			pstmt = conn.prepareStatement(sql_insertAll);
 			for (AnimalVO data : datas) {
@@ -36,6 +77,5 @@ public class AnimalDAO {
 		} finally {
 			JDBCUtil.disconnect(pstmt, conn);
 		}
-	}
+	}*/
 
-}
