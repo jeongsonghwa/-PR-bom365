@@ -33,7 +33,6 @@ public class BoardFrontController extends HttpServlet {
 		// 문자열 조작을 통하여 .do 파일에 대한 분석 (ex: main.do -> command = main)
 		String command = uri.substring(cp.length() + 1, uri.length() - 3);
 		System.out.println(command);
-		System.out.println(command);
 		// 로직이 바뀌어도 서버데이터에 부담을 주지 않는다
 		if (command.equals("main")) {
 			try {
@@ -58,6 +57,7 @@ public class BoardFrontController extends HttpServlet {
 				forward = new BoardCategoryAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("boardCategory.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
@@ -67,15 +67,16 @@ public class BoardFrontController extends HttpServlet {
 				forward = new BoardSearchAction().execute(request, response);
 			} catch (Exception e) {
 				System.out.println("boardSearch.do 수행중 문제 발생");
+				e.printStackTrace();
 			}
 		}
 		
 		// 상세글 보기
-		else if (command.equals("boardDetail")) {
+		else if (command.equals("boardOne")) {
 			try {
-				forward = new BoardDetailAction().execute(request, response);
+				forward = new BoardOneAction().execute(request, response);
 			} catch (Exception e) {
-				System.out.println("boardDetail.do 수행중 문제 발생");
+				System.out.println("boardOne.do 수행중 문제 발생");
 			}
 		}
 		

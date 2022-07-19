@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
 <!DOCTYPE HTML>
 <html>
@@ -49,24 +50,22 @@
 
 <!-- contact deleteAccount.css -->
 <link rel="stylesheet" href="css/deleteAccount.css">
-
+<link rel="stylesheet" href="css/supportRequest.css">
+<link rel="stylesheet" href="css/support.css">
 </head>
+
 <body>
-
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
 
 		<!-- Page Header-->
-		<mytag:pageHeader/>
+		<mytag:pageHeader />
 
 		<div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="main.jsp">HOME</a></span> / <span>my page</span>
+							<span><a href="main.do">HOME</a></span> / <span>my page</span>
 						</p>
 					</div>
 					<div class="col">
@@ -81,7 +80,7 @@
 								id="pills-manufacturer-tab" data-toggle="pill"
 								href="#pills-manufacturer" role="tab"
 								aria-controls="pills-manufacturer" aria-expanded="true"
-								aria-selected="false">후원내역</a></li>
+								aria-selected="false">내역조회</a></li>
 							<li class="nav-item"><a class="nav-link"
 								id="pills-review-tab" data-toggle="pill" href="#pills-review"
 								role="tab" aria-controls="pills-review" aria-expanded="true"
@@ -109,8 +108,9 @@
 								</div>
 
 								<div class="tab-pane border fade" id="pills-manufacturer"
-									role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-									<mytag:mytable />
+									role="tabpanel" aria-labelledby="pills-manufacturer-tab"
+									style="padding: 32px 0 4em 0;">
+									<mytag:myTable />
 								</div>
 
 								<div class="tab-pane border fade" id="pills-review"
@@ -134,6 +134,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

@@ -44,8 +44,6 @@
 </head>
 <body>
 
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -56,7 +54,7 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="boardRequest.jsp">봉사신청</a></span> / <span>등록완료</span>
+							<span><a href="boardRequest.jsp">글등록</a></span> / <span>등록완료</span>
 						</p>
 					</div>
 				</div>
@@ -88,6 +86,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

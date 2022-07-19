@@ -482,8 +482,7 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px; }
+  }
 
 .no-gutters {
   margin-right: 0;
@@ -7422,7 +7421,6 @@ h1, h2, h3, h4, h5,
       display: none; } }
 
 .colorlib-nav ul {
-   width: 346px;
    float: right;
   padding: 0;
   margin: -39px 0 0 -12px; }
@@ -7451,7 +7449,7 @@ h1, h2, h3, h4, h5,
     .colorlib-nav ul li.has-dropdown {
       position: relative; }
       .colorlib-nav ul li.has-dropdown .dropdown {
-        width: 130px;
+        width: 153px;
         -webkit-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 14px 33px -9px rgba(0, 0, 0, 0.75);
@@ -8891,7 +8889,7 @@ a.fcbutton {
 div#login {
   	width: 100%;
     text-align: center;
-    margin-bottom: 10em;
+    margin-bottom: 13em;
     margin-top: 1em;
 }
 #menuTitle {
@@ -8936,6 +8934,11 @@ a#complete {
 .boardListFirstDiv {
    	margin-bottom: 7em;
     margin-top: 3em;
+    width: 100%;
+    text-align: center;
+}
+.volReqFirstDiv {
+    margin-top: 4em;
     width: 100%;
     text-align: center;
 }
@@ -8986,7 +8989,7 @@ tbody.boardTbottom {
     border-bottom: 2px solid #dee2e6;
 }
 .twins-wrap {
-    padding: 2em;
+    padding: 2em 0 4em 0;
     height: 100%;
 }
 .twin.container {
@@ -9058,9 +9061,11 @@ a.btn.btn-primary.boardUD {
 }
 .btn.btn-primary.del:focus, .btn.btn-primary.del:active {
     background: #cbbd89 !important;
+   	color: #fff  !important;
 }
 .btn.btn-primary.del:hover {
     background: #5e5840 !important;
+   	color: #fff  !important;
 }
 .btn.btn-primary.boardUD:focus, .btn.btn-primary.boardUD:active {
 	background: #978d67  !important;
@@ -9068,4 +9073,144 @@ a.btn.btn-primary.boardUD {
 }
 .btn.btn-primary.boardUD:hover {
 	background: #5e5840 !important;
+}
+.calendar {
+	text-align: center; color : #978d67;
+	font-size: 17px;
+	color: #978d67;
+}
+
+.calendarDay {
+	height: 55px;
+	border-block: 1px solid #5959592e;
+}
+
+.calendar td button {
+	color: #978d67;
+	width: 70px;
+	height: 70px;
+	border: 1px solid #ffffff00;
+	background-color: #ffffff00;
+}
+
+.calendar td button:hover, .calendar td button:active {
+	color: #5e5840;
+	cursor: pointer;
+	outline: none;
+}
+
+.calendar td button:focus {
+	outline: none;
+}
+
+.calendarDate button:hover, .calendarDate button:active {
+	font-size: 22px;
+}
+
+button.volFull {
+	color: #0000004d !important;
+}
+
+button.volFull:hover, button.volFull:active {
+	cursor: default !important;
+	font-size: 17px;
+	color: #0000004d;
+	outline: none;
+}
+
+.btn.btn-primary.vol {
+    width: 77%;
+    margin-top: 2em;
+    margin-right: 0;
+}
+.btn.btn-primary.vol:hover {
+    background: #978d67 !important;
+}
+small.volBack {
+    cursor: pointer;
+    color: #978d67;
+}
+small.volBack:hover {
+    color: #5e5840;
+}
+a.btn.btn-primary.main {
+    font-size: 17px !important;
+    border-radius: 40px;
+}
+input.btn.btn-primary.del.support {
+    margin: 1.5em 0px 0 0 !important;
+    width: 10em;
+}
+a.mainREG {
+    color: #797152;
+    cursor: pointer;
+}
+a.mainREG:hover {
+    color: white;
+    cursor: pointer;
+}
+textarea.form-control.gap.one {
+	border-radius: 8px;
+	border: 0px !important;
+	font-size: 1.25rem !important;
+	padding: 14px;
+    min-height: 330px;
+}
+.container.table {
+	max-width: 1282px !important;
+}
+.twins-wrap.tem {
+    padding: 0 15px;
+}
+td.startSup {
+    border-top: 1px dashed #dee2e6;
+    text-align: right;
+    color: #59595973;
+    font-size: 13px;
+    padding: 0;
+}
+a.btn.btn-primary.adopt.done {
+    color: #fff;
+    cursor: default;
+}
+h3.adVolyyyyMMdd {
+    background-color: #cbbd89;
+    color: white;
+}
+.row.adVol {
+    width: 50em;
+    padding: 31px 45px 0 45px;
+	display: flex;
+    justify-content: center;
+}
+td.adVolTitle {
+    border-top: 0;
+    font-size: 30px;
+    padding-top: 0;
+}
+td.adVolTd {
+    border-block: 1px solid #dee2e6;
+}
+h3.back {
+    background-color: #cbbd89;
+    color: white;
+    margin: 0
+}
+button.btn.btn-primary.adVol {
+    margin: 34px 0 0 0;
+    width: 244px;
+    border-radius: 10px;
+    background: #cbbd89;
+}
+a.btn.btn-primary.inputSubmit.apply.board, a.btn.btn-primary.inputSubmit.apply.board:focus, a.btn.btn-primary.inputSubmit.apply.board:active {
+    width: 148px;
+    float: right;
+	background: #cbbd89 !important;
+	color: #fff !important;
+}
+a.btn.btn-primary.inputSubmit.apply.board:hover {
+	cursor: pointer;
+	background: #978d67 !important;
+	outline: none;
+	color: #fff !important;
 }

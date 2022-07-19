@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>봉사신청</title>
+<title>글작성</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,10 +40,9 @@
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-
-	<div class="colorlib-loader"></div>
 
 	<div id="page">
 
@@ -54,14 +53,12 @@
 				<div class="row">
 					<div class="col">
 						<p class="bread">
-							<span><a href="boardList.do">봉사자모집</a></span> / <span>봉사신청</span>
+							<span><a href="boardList.do">자유게시판</a></span> / <span>글등록</span>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<h1 id="menuTitle">봉사신청</h1>
-		<hr>
 
 		<div style="text-align: center; margin-top: 2em; margin-bottom: 7em;">
 			<div class="col-sm-4 text-left total writeForm"
@@ -73,9 +70,9 @@
 							placeholder="제목을 입력해 주세요." name="board_title">
 
 						<div class="form-group">
-							<h5>신청 내용</h5>
-							<textarea name="board_content" cols="30" rows="10"
-								class="form-control gap" placeholder="희망 날짜와 시간을 반드시 포함해주세요."></textarea>
+							<h5>내용</h5>
+							<textarea name="board_content" rows="10" maxlength="1000"
+								class="form-control gap" placeholder="내용을 입력해 주세요."></textarea>
 						</div>
 					</div>
 					<input type="submit" value="글 작성하기"
@@ -83,7 +80,6 @@
 				</form>
 			</div>
 		</div>
-
 
 		<!-- Page Footer-->
 		<mytag:pageFooter />
@@ -93,7 +89,9 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
+	
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

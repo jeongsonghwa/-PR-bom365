@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -48,76 +49,135 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<!-- jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 </head>
 
-<body>
+<body id="page">
 
+	<!-- Page Header-->
+	<mytag:pageHeader />
 
-	<div class="colorlib-loader"></div>
-	<div id="page">
-
-		<!-- Page Header-->
-		<mytag:pageHeader/>
-
-		<div class="breadcrumbs">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<p class="bread">
-<!-- href수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-							<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
-						</p>
-					</div>
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p class="bread">
+						<span><a href="support.jsp">후원신청</a></span> / <span>일시후원</span>
+					</p>
 				</div>
 			</div>
 		</div>
-
-
-		<h1 id="menuTitle">일시후원신청</h1>
-
-		<div class="signup-form-container">
-<!-- action수정하기//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-			<form action="supportDone.jsp" method="post"
-				class="woocommerce-form woocommerce-form-register register ">
-				<div class="input-container">
-					<label class="reg_signup">은행&nbsp;</label> <input type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="temporary_bank">
-				</div>
-				<div class="input-container">
-					<label class="reg_signup">계좌번호&nbsp;</label> <input type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="temporary_acoount">
-				</div>
-				<div class="input-container">
-					<label class="reg_signup">금액&nbsp;</label> <input type="text"
-						class="woocommerce-Input woocommerce-Input--text input-text"
-						name="temporary_amount">
-				</div>
-				<input type="submit" class="btn btn-primary supprot"
-					value="&nbsp;신청하기&nbsp;">
-			</form>
-
-
-
-		</div>
-
-
-		<!-- Page Footer-->
-		<mytag:pageFooter />
 	</div>
+
+
+	<h1 id="menuTitle">일시후원신청</h1>
+	<hr>
+
+	<div class="volReqFirstDiv">
+		<div style="display: inline-block;">
+			<table>
+				<tr>
+					<td style="display: flex;"><h4>금액&nbsp;&nbsp;</h4> <select
+						name="temporary_amount" class="form-control input tem"
+						id="kakaopay-amount" data-msg="금액을 선택해 주세요"
+						data-error-class="u-has-error" data-success-class="u-has-success">
+							<option value="">🐶🐱🐶🐱</option>
+						<option value="10,000">10,000</option>
+						<option value="30,000">30,000</option>
+						<option value="50,000">50,000</option>
+						<option value="100,000">100,000</option>
+						<option value="150,000">150,000</option>
+						<option value="200,000">200,000</option>
+						<option value="250,000">250,000</option>
+						<option value="300,000">300,000</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><c:choose>
+							<c:when test="${supporter_id == null }">
+								<input type="submit" onclick="loginCheck()"
+									class="btn btn-primary del support" value="&nbsp;신청하기&nbsp;">
+							</c:when>
+							<c:otherwise>
+								<input type="submit" onclick="requestPay();"
+									class="btn btn-primary del support" value="&nbsp;신청하기&nbsp;">
+							</c:otherwise>
+						</c:choose></td>
+				</tr>
+			</table>
+		</div>
+		<h6 style="margin-bottom: 5em; color: #59595978;">카카오페이 결제 페이지로 넘어갑니다.</h6>
+	</div>
+
+	<hr style="margin-top: 0;">
+	<mytag:howToUseSupport />
+	<!-- Page Footer-->
+	<mytag:pageFooter />
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+
+	<script>
+		//KAKAO API
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp44896858"); // 가맹점 식별코드
+
+		function requestPay() {
+			// IMP.request_pay(param, callback) 결제창 호출
+			IMP.request_pay({
+				pg : "html5_inicis",
+				pay_method : "card",
+				temporary_number : "5000_" + new Date().getTime(),
+				//관리자페이지(주문명)에 노출될 정보들(밑으론 key값 변경불가능)
+				name : "봄365 후원",
+				amount : document.getElementById("kakaopay-amount").value,
+				supporter_id : "${supporter_id}",
+				buyer_name : "${supporter_name}",
+			}, function(rsp) {
+				if (rsp.success) {
+					location.href = "supportDone.jsp";
+				} else {
+					alert("결제에 실패했습니다.");
+					location.href = "supportTEMInsert.jsp";
+				}
+			});
+		}
+
+		//데이터 Controller로 전송
+		$('#kakaopay-amount').change(
+				function() {
+
+					$.ajax({
+						url : "supportTEMInsert.sp",
+						type : 'get',
+						data : {
+							temporary_amount : $(
+									'#kakaopay-amount option:selected').val()
+						},
+						success : function(data) {
+						},
+						error : function() {
+							console.log("supportTEMInsert ajax진입안됨");
+						}
+					});
+
+					console.log(amount_input);
+				});
+	</script>
+
+
+	<script src="js/loginCheck.js"></script>
 	<!-- popper -->
 	<script src="js/popper.min.js"></script>
 	<!-- bootstrap 4.1 -->
 	<script src="js/bootstrap.min.js"></script>
-	<!-- jQuery easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
@@ -134,7 +194,6 @@
 	<!-- Main -->
 	<script src="js/main.js"></script>
 </body>
-
 
 
 </html>

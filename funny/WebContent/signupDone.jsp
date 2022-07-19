@@ -44,8 +44,6 @@
 </head>
 <body>
 
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -72,7 +70,7 @@
 						</p>
 						<h3 class="mb-4">🎉 가입 완료되었습니다! 🎉</h3>
 						<p>
-							<a href="login.jsp" class="btn btn-primary" id="complete">로그인하러 가기</a>
+							<a href="main.do" class="btn btn-primary" id="complete">메인으로 돌아가기</a>
 						</p>
 					</div>
 				</div>
@@ -88,6 +86,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

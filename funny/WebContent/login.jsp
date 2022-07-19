@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="mytag"%>
+<c:set var="PREVIOUS" value="<%=request.getHeader(\"REFERER\")%>"
+    scope="session" />
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -43,8 +46,6 @@
 
 </head>
 <body>
-
-	<div class="colorlib-loader"></div>
 
 	<div id="page">
 
@@ -96,6 +97,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->

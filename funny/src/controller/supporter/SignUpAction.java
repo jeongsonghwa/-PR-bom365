@@ -1,8 +1,6 @@
 package controller.supporter;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 
@@ -12,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Action;
 import controller.ActionForward;
 import model.supporter.SupporterDAO;
-import model.supporter.SupporterVO;
+import model.supporter.SupporterDTO;
 
 
 public class SignUpAction  implements Action{
@@ -24,24 +22,17 @@ public class SignUpAction  implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		SupporterVO supporterVO = new SupporterVO();
+		SupporterDTO supporterDTO;
+		supporterDTO = createSupporterVO(request);
 		
-		
-		supporterVO = createSupporterVO(request);
-		
-		
-		if(supporterVO != null) {
-			if(supporterDAO.insert(supporterVO)) {
+		if(supporterDTO != null) {
+			if(supporterDAO.insert(supporterDTO)) {
 				forward = new ActionForward();
 				forward.setPath("signupDone.jsp");
 				forward.setRedirect(true);
-				
-				
 			} else {
 				System.out.println("insert 실패");
 			}
-			
-			
 		} else {
 			System.out.println("supporterVO 생성 실패");
 		}
@@ -50,11 +41,12 @@ public class SignUpAction  implements Action{
 	}
 	
 	
-	public SupporterVO createSupporterVO(HttpServletRequest request) {
-		SupporterVO supporter = null;
+	public SupporterDTO createSupporterVO(HttpServletRequest request) {
+		SupporterDTO supporter = null;
 		
+				
 		if(request != null) {
-			supporter = new SupporterVO();
+			supporter = new SupporterDTO();
 			
 			supporter.setSupporter_id(request.getParameter("supporter_id"));
 			supporter.setSupporter_name(request.getParameter("supporter_name"));
@@ -63,23 +55,13 @@ public class SignUpAction  implements Action{
 			supporter.setPost_code(request.getParameter("post_code"));
 			supporter.setDetailed_address(request.getParameter("detailed_address"));
 			
+			supporter.toString();
+			
 			return supporter;
 		} 
 		
 		
 		return supporter;
 	}
-	public String decodingName(String name) {
-		
-		
-		try {
-			return URLDecoder.decode(name,"utf-8");
-			
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return name;
-	}
-	
+
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>봉사신청</title>
+<title>글수정</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,8 +43,6 @@
 </head>
 <body>
 
-	<div class="colorlib-loader"></div>
-
 	<div id="page">
 
 		<!-- Page Header-->
@@ -72,7 +70,7 @@
 
 						<div class="form-group">
 							<h5>내용</h5>
-							<textarea name="board_content" cols="30" rows="10"
+							<textarea name="board_content" rows="10" maxlength="1000"
 								class="form-control gap">${boardDetail.board.board_content}</textarea>
 						</div>
 					</div>
@@ -92,6 +90,7 @@
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 
+	<script src="js/loginCheck.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- popper -->
